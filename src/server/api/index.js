@@ -39,9 +39,8 @@ const users = [{ id: 1, email: "poweruser@gmail.com" }];
 
 app.use(express.json()); //populate req.body object
 app.use(WATCHLIST_PATH, watchlists);
-app.use(express.static("public"));
 app.use(cors());
-// console.log(path.dirname(__dirname, "../../src"), "HELP");
+
 //Home page and get the user
 app.post(
   "/api/signup",
@@ -63,14 +62,5 @@ app.post(
     res.send(users);
   })
 );
-
-// Get react App
-app.get("/watchlist", (req, res) => {
-  console.log(
-    path.join(__dirname, "../../../public/index.html"),
-    "THIS IS THE PATH"
-  );
-  res.sendFile(path.join(__dirname, "../../../public/index.html"));
-});
 
 app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
