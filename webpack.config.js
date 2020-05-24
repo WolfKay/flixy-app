@@ -40,6 +40,7 @@ module.exports = {
       }
     ]
   },
+  target: "web",
   plugins: [
     new HtmlWebpackPlugin({
       template: "./public/index.html"
