@@ -1,0 +1,26 @@
+@import "../common/_variables";
+
+// Inputs  should be moved into a div to avoid selecting html tags instead
+
+
+input {
+    margin-left: 0;
+    margin-right: 6px;
+}
+
+.filters {
+    margin: 0 42px;
+    display: flex;
+    align-items: center;
+
+    &__elem {
+        color: $font-primary;
+        margin-right: 18px;
+    }
+
+    &__reset {
+        color: $background;
+        margin-right: 42px;
+
+    }
+}
