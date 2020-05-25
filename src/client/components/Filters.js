@@ -53,7 +53,7 @@ class Filters extends Component {
         <Input
           className='search'
           placeholder='Search for movies in your watchlist'
-          handleInputChange={this.getMovieFilterValue}
+          onInputChange={this.getMovieFilterValue}
         />
       </div>
     );

@@ -6,15 +6,13 @@ import "./MovieList.scss";
 
 class MovieList extends Component {
   render() {
+    const { movieList } = this.props;
     return (
       <div className='movie-list'>
-        <Movie />
-        <Movie />
-        <Movie />
-        <Movie />
-        <Movie />
-        <Movie />
-        <Movie />
+        {movieList.length > 0 &&
+          movieList.map(({ movieTitle, movieGenres }) => (
+            <Movie key={movieTitle} title={movieTitle} genres={movieGenres} />
+          ))}
       </div>
     );
   }

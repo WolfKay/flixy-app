@@ -11,16 +11,10 @@ router.get("/", (req, res) => {
 //Add movie to user's watchlist
 router.post("/", (req, res) => {
   const addMovie = `INSERT INTO watchlists (movie_id, movie_title, user_id, watched) VALUES (?, ?, ?, ?)`;
-  const addMovieGenres = `INSERT INTO movie_genres(movie_id, genre) VALUES `;
   const genres = [];
   const movieID = uuidv4();
 
-  const insertValues = genres.map((genre) => {
-    return `("${movieID}", "${genre}")`;
-  });
-  const queryGenres = addMovieGenres + insertValues.join(",");
-
-  if (!genres) {
+  if (!genres.length) {
     try {
       db.run(
         addMovie,
@@ -29,41 +23,40 @@ router.post("/", (req, res) => {
           if (err) {
             throw err;
           }
-
-          if (!genres) {
-            return;
-          }
+          res.sendStatus(200);
         }
       );
     } catch (err) {
       throw new Error(err);
     }
-  }
+  } else {
+    const addMovieGenres = `INSERT INTO movie_genres(movie_id, genre) VALUES `;
+    const insertValues = genres.map((genre) => {
+      return `("${movieID}", "${genre}")`;
+    });
+    const queryGenres = addMovieGenres + insertValues.join(",");
 
-  db.serialize(() => {
-    try {
-      db.run(
-        addMovie,
-        [movieID, req.body.title, req.body.user, req.body.watched],
-        (err) => {
+    db.serialize(() => {
+      try {
+        db.run(
+          addMovie,
+          [movieID, req.body.title, req.body.user, req.body.watched],
+          (err) => {
+            if (err) {
+              throw err;
+            }
+          }
+        ).run(queryGenres, (err, row) => {
           if (err) {
             throw err;
           }
-
-          if (!genres) {
-            return;
-          }
-        }
-      ).run(queryGenres, (err, row) => {
-        if (err) {
-          throw err;
-        }
-        res.sendStatus(200);
-      });
-    } catch (err) {
-      throw new Error(err);
-    }
-  });
+          res.sendStatus(200);
+        });
+      } catch (err) {
+        throw new Error(err);
+      }
+    });
+  }
 });
 
 //Add genres

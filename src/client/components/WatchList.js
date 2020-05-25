@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 
+import createMovie from "./../../server/api/clients/watchlists";
+
 import MovieList from "./MovieList";
 import Filters from "./Filters";
 import AddMovie from "./AddMovie";
@@ -7,6 +9,20 @@ import AddMovie from "./AddMovie";
 import "./watchList.scss";
 
 class WatchList extends Component {
+  state = {
+    //replace with DB query result
+    movieList: [],
+    newMovie: {}
+  };
+
+  componentDidMount() {
+    createMovie(this.state.newMovie, this.props.user, 0);
+  }
+
+  createMovie = (newMovie) => {
+    const movieList = [...this.state.movieList, newMovie];
+    this.setState({ movieList, newMovie });
+  };
   render() {
     return (
       <div className='wrapper'>
@@ -15,11 +31,10 @@ class WatchList extends Component {
         </div>
         <div className='header'>
           <span className='header__title'>Watchlist</span>
-          {/* <AddMovie /> */}
-          <div className='separator' />
-          <Filters />
-          <MovieList className='movie-list'></MovieList>
+          <AddMovie createMovie={this.createMovie} />
         </div>
+        <Filters />
+        <MovieList className='movie-list' movieList={this.state.movieList} />
       </div>
     );
   }

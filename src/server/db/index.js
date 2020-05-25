@@ -11,4 +11,30 @@ let db = new sqlite3.Database(dbPath, sqlite3.OPEN_READWRITE, (err) => {
   console.log("Connected to the flixsy SQlite database.");
 });
 
+// Query DB for user's watchlist
+const getWatchlist = () => {
+  const getAllMovies = `SELECT * FROM watchlists`;
+  db.all(getAllMovies, (err, rows) => {
+    if (err) {
+      throw err;
+    }
+    return rows;
+  });
+  db.close();
+};
+
+// // Query DB for user's watchlist
+// export const getallMovies = () => {
+//   const getAllMovies = `SELECT * FROM watchlists`;
+//   db.all(getAllMovies, (err, rows) => {
+//     if (err) {
+//       throw err;
+//     }
+//     rows.forEach((row) => {
+//       console.log(row);
+//     });
+//     db.close();
+//   });
+// };
+
 module.exports = db;

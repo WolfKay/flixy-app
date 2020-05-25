@@ -4,9 +4,14 @@ import PropTypes from "prop-types";
 import "./Input.scss";
 
 class Input extends Component {
-  getInputValue = (event) => {
-    this.props.handleInputChange(event.target.value);
+  handleInputChange = (event) => {
+    this.props.onInputChange(event);
   };
+
+  handleKeyPress = (event) => {
+    this.props.onInputKeyPress(event);
+  };
+
   render() {
     const { placeholder } = this.props;
     return (
@@ -14,7 +19,8 @@ class Input extends Component {
         className='search'
         type='text'
         placeholder={placeholder}
-        onChange={this.getInputValue}
+        onChange={this.handleInputChange}
+        onKeyPress={this.handleKeyPress}
       />
     );
   }
@@ -22,7 +28,13 @@ class Input extends Component {
 
 Input.propTypes = {
   placeholder: PropTypes.string.isRequired,
-  handleInputChange: PropTypes.func.isRequired
+  onInputChange: PropTypes.func,
+  onInputKeyPress: PropTypes.func
+};
+
+Input.defaultProps = {
+  onInputChange: () => {},
+  onInputKeyPress: () => {}
 };
 
 export default Input;

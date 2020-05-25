@@ -1,20 +1,27 @@
 @import "../common/_variables";
 
 .movie-item {
-    width: 200px;
-    height: 250px;
     background-color: $primary;
     border-radius: 4px;
     margin: 18px 14px;
+    display: flex;
+    flex-direction: column;
 
     &__title {
+        margin: 18px;
         font-size: 18px;
         color: $font-primary;
     }
 
-    &__genre {
+    &__genres {
+        margin: 18px;
         font-size: 14px;
         color: $secondary;
         font-weight: 100;
+        display: flex;
+    }
+
+    &__genre:not(:last-child) {
+        margin-right: 8px;
     }
 }
