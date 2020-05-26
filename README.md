@@ -1,9 +1,9 @@
-# flixy-app
-Create a watchlis and keep track of movies you have watched or movies you would like to watch in the future!
+# Flixy
+Create a watchlist and keep track of movies you have watched or movies you would like to watch in the future!
 
 ## Used stack:
 - The Frontend was built on React, Babel, Webpack and SASS.
-- The Backend was built with Node,js, Express.js and DB with Sqlite. Plus extra packages to make this stack possible like Cors, Sqlite2 and more.
+- The Backend was built with Node,js, Express.js and DB with Sqlite. Plus extra packages to make this stack possible like Cors, Sqlite3 and more.
 
 # 1.- Start the App:
 - Start the server by running in the terminal:"npm run start-server:dev"
