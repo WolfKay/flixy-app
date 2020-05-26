@@ -1,5 +1,5 @@
-# flixy-app
-Create a watchlis and keep track of movies you have watched or movies you would like to watch in the future!
+# Flixy
+Create a watchlist and keep track of movies you have watched or movies you would like to watch in the future!
 
 ## Used stack:
 - The Frontend was built on React, Babel, Webpack and SASS.
