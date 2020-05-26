@@ -1,0 +1,14 @@
+@import "../common/_variables";
+
+.login {
+    background-color: $background;
+    color: $font-primary;
+
+    &__title {
+        padding: 28px;
+    }
+
+    &__input {
+        margin: 18px 28px;
+    }
+}

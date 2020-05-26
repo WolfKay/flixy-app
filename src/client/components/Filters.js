@@ -1,26 +1,17 @@
 import React, { Component } from "react";
-// import createMovie from "./../../server/api/clients/watchlist";
 
 import Input from "./Input";
 
 import "./Filters.scss";
 
-const GENRES_FILTER = ["romance", "horror", "drama"];
+const ALLOWED_GENRES_FILTER = ["romance", "horror", "comedy"];
 
 class Filters extends Component {
   state = {
-    filterGenre: "",
     movietitle: ""
   };
 
-  componentDidMount() {
-    // createMovie()
-  }
-
-  getFilterGenreValue = (event) => {
-    this.setState({ filterGenre: event.target.value });
-  };
-
+  //TODO: allow search for movies
   getMovieFilterValue = (value) => {
     this.setState({ movietitle: value });
   };
@@ -28,7 +19,7 @@ class Filters extends Component {
   render() {
     return (
       <div className='filters'>
-        {GENRES_FILTER.map((genre) => (
+        {ALLOWED_GENRES_FILTER.map((genre) => (
           <div className='filters__elem' key={genre}>
             <input
               onClick={this.getFilterGenreValue}

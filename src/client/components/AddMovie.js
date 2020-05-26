@@ -61,7 +61,7 @@ class AddMovie extends PureComponent {
           onInputKeyPress={this.addGenres}
         />
         {movieTitle && <Movie title={movieTitle} genres={movieGenres} />}
-        <button onClick={this.handleCreateMovie}>Save</button>
+        <button onClick={this.handleCreateMovie}>Create movie</button>
       </div>
     );
   }

@@ -1,6 +1,12 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 
-import createMovie from "./../../server/api/clients/watchlists";
+import {
+  createMovie,
+  deleteMovie,
+  getWatchlist,
+  checkWatchedMovie
+} from "./../../server/api/clients/watchlists";
 
 import MovieList from "./MovieList";
 import Filters from "./Filters";
@@ -10,34 +16,63 @@ import "./watchList.scss";
 
 class WatchList extends Component {
   state = {
-    //replace with DB query result
-    movieList: [],
-    newMovie: {}
+    movieList: null
   };
 
-  componentDidMount() {
-    createMovie(this.state.newMovie, this.props.user, 0);
+  async componentDidMount() {
+    // get query params
+    var URL_STRING = window.location;
+    var url = new URL(URL_STRING);
+    const genreQuery = url.searchParams.get("genre");
+
+    // GEt watchlist
+    const movieList = await getWatchlist(this.props.user.id, genreQuery);
+    this.setState({ movieList });
   }
 
-  createMovie = (newMovie) => {
-    const movieList = [...this.state.movieList, newMovie];
-    this.setState({ movieList, newMovie });
+  createMovie = (movie) => {
+    if (movie) {
+      createMovie(movie.movieTitle, this.props.user.id, movie.movieGenres);
+    }
+    window.location.reload();
   };
+
+  deleteMovie = (movieId) => {
+    if (movieId) {
+      deleteMovie(movieId);
+    }
+    window.location.reload();
+  };
+
+  handleOnWatchedCheck = (watched, movieId) => {
+    checkWatchedMovie(watched, movieId);
+    window.location.reload();
+  };
+
   render() {
     return (
       <div className='wrapper'>
         <div className='nav'>
-          <span>FLIXY -</span> <span>Welcome {this.props.user}</span>
+          <span>FLIXY -</span> <span>Welcome {this.props.userHeader}</span>
         </div>
         <div className='header'>
           <span className='header__title'>Watchlist</span>
-          <AddMovie createMovie={this.createMovie} />
+          <AddMovie createMovie={this.createMovie} noDelete />
         </div>
         <Filters />
-        <MovieList className='movie-list' movieList={this.state.movieList} />
+        <MovieList
+          className='movie-list'
+          movieList={this.state.movieList}
+          onWatchedCheck={this.handleOnWatchedCheck}
+          onDeleteMovieClick={this.deleteMovie}
+        />
       </div>
     );
   }
 }
+
+WatchList.propTypes = {
+  user: PropTypes.shape({ email: PropTypes.string, id: PropTypes.number })
+};
 
 export default WatchList;
