@@ -12,7 +12,7 @@ import MovieList from "./MovieList";
 import Filters from "./Filters";
 import AddMovie from "./AddMovie";
 
-import "./watchList.scss";
+import "./WatchList.scss";
 
 class WatchList extends Component {
   state = {

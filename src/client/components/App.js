@@ -29,7 +29,7 @@ class App extends Component {
         <Switch>
           <Route path='/watchlist'>
             <WatchList
-              user={this.state.user}
+              user={createUser}
               userHeader={this.state.userHeader}
             />
           </Route>
