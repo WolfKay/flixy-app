@@ -6,9 +6,11 @@ Create a watchlist and keep track of movies you have watched or movies you would
 - The Backend was built with Node,js, Express.js and DB with Sqlite. Plus extra packages to make this stack possible like Cors, Sqlite3 and more.
 
 # 1.- Start the App:
-- Start the server by running in the terminal:"npm run start-server:dev"
-- Start the React App by running in the terminal:"npm run start:dev"
-- New tab will Open with localhost:8080/
+- Clone repository to your local.
+- run npm i.
+- Start the server by running in the terminal:"npm run start-server:dev".
+- Start the React App by running in the terminal:"npm run start:dev".
+- New tab will Open with localhost:8080/.
 
 # 2.- Next steps:
 ## - On the frontend:
