@@ -23,7 +23,7 @@ Create a watchlist and keep track of movies you have watched or movies you would
 
 ## - On the Backend:
 - Separate DB queries from the routes file in to a query .js.
-- Refactor queries to allow the user to creation.
+- Refactor queries to allow the user creation.
 - Implement custom error handler.
 - Add fetch body to constants.
 
