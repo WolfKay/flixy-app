@@ -3,7 +3,7 @@ Create a watchlist and keep track of movies you have watched or movies you would
 
 ## Used stack:
 - The Frontend was built on React, Babel, Webpack and SASS.
-- The Backend was built with Node,js, Express.js and DB with Sqlite. Plus extra packages to make this stack possible like Cors, Sqlite2 and more.
+- The Backend was built with Node,js, Express.js and DB with Sqlite. Plus extra packages to make this stack possible like Cors, Sqlite3 and more.
 
 # TODO:
 1.- add functional components.
