@@ -33,3 +33,6 @@ Create a watchlist and keep track of movies you have watched or movies you would
 ### - Nice to haves in the future
 - Auth.
 - connect to Mvoie API to populate DB and search through movie titles. Would make querying easier. and keep a cleaner DB with no movie duplicates.
+
+# Test with runme.io
+[![Runme](https://runme.io/static/button.svg)](https://runme.io/run?app_id=651ec809-eecf-4a95-85ac-74687f7b6aac)
